@@ -1,0 +1,68 @@
+{
+  "name": "@buildfordemand/chuckle",
+  "displayName": "Chuckle",
+  "description": "Simplify your workflow with Chuckle, the VS Code extension that generates mock API data from your TypeScript declarations using the power of LLMs. Save time on tedious tasks and let Chuckle handle the mock data so you can focus on what matters—building great apps.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "icon": "assets/icon.png",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "chuckle.mockDataFromSelection",
+        "title": "Chuckle: Generate Mock Data (Selection)"
+      },
+      {
+        "command": "chuckle.mockDataFromFile",
+        "title": "Chuckle: Generate Mock Data (File)"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Chuckle",
+      "properties": {
+        "chuckle.llm.provider": {
+          "type": "enum",
+          "enum": ["openai"],
+          "default": "openai",
+          "description": "Choose a provider for the LLM model."
+        },
+        "chuckle.llm.model": {
+          "type": "string",
+          "default": "gpt-3.5-turbo",
+          "description": "Choose a model to use from the LLM provider."
+        },
+        "chuckle.llm.apiKey": {
+          "type": "string",
+          "default": null,
+          "description": "Your API Key for the LLM provider."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.94.0",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.11.1",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "openai": "^4.68.1"
+  }
+}
