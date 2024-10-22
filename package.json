@@ -2,7 +2,7 @@
   "name": "@buildfordemand/chuckle",
   "displayName": "Chuckle",
   "description": "Simplify your workflow with Chuckle, the VS Code extension that generates mock API data from your TypeScript declarations using the power of LLMs. Save time on tedious tasks and let Chuckle handle the mock data so you can focus on what matters—building great apps.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "engines": {
     "vscode": "^1.94.0"
   },
@@ -44,6 +44,15 @@
           "description": "Your API Key for the LLM provider."
         }
       }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "chuckle.mockDataFromSelection",
+          "when": "resourceLangId == typescript",
+          "group": "z_commands"
+        }
+      ]
     }
   },
   "scripts": {
